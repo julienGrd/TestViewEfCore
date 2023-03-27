@@ -5,7 +5,7 @@ using TestViewEfCore.Models;
 
 Console.WriteLine("Hello, World!");
 
-var lCnxStr = "Server=192.168.56.1,49306;initial catalog=F_REUCSP;;User ID=sa;Password=is;MultipleActiveResultSets=true;App=Geckos;Trust Server Certificate=true";
+var lCnxStr = "Server=******;initial catalog=***;;User ID=**;Password=**;MultipleActiveResultSets=true;App=Geckos;Trust Server Certificate=true";
 
 var lDbContextOptions = new DbContextOptionsBuilder<TestViewEFCoreDbContext>()
    .UseSqlServer(lCnxStr)
