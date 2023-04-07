@@ -3,8 +3,6 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-
 namespace TestViewEfCore.Models;
 
 public partial class TestViewEFCoreDbContext : DbContext
@@ -132,10 +130,10 @@ public partial class TestViewEFCoreDbContext : DbContext
                     });
 
             //this seem not work, 
-            //entity
-            //    .HasOne(a => a.LastIns)
-            //    .WithOne(e => e.Enf)
-            //    .HasForeignKey<Enfants>(b => b.NumDos);
+            entity
+                .HasOne(a => a.LastIns)
+                .WithOne(e => e.Enf)
+                .HasForeignKey<Enfants>(b => b.NumDos);
         });
 
         modelBuilder.Entity<Inss>(entity =>
