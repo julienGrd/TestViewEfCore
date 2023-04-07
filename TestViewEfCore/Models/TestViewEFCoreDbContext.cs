@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace TestViewEfCore.Models;
 
@@ -71,7 +72,9 @@ public partial class TestViewEFCoreDbContext : DbContext
             entity.Property(e => e.VilleId).HasColumnName("VilleID");
             entity.Property(e => e.WsRetour)
                 .HasMaxLength(2)
-                .IsUnicode(false);
+            .IsUnicode(false);
+
+            entity.HasOne(e => e.Enf).WithOne(e => e.LastIns).HasForeignKey<ViewLastIns>(e => e.NumDos);
         });
 
         modelBuilder.Entity<Enfants>(entity =>
@@ -129,10 +132,10 @@ public partial class TestViewEFCoreDbContext : DbContext
                     });
 
             //this seem not work, 
-            entity
-                .HasOne(a => a.LastIns)
-                .WithOne(e => e.Enf)
-                .HasForeignKey<ViewLastIns>(b => b.NumDos);
+            //entity
+            //    .HasOne(a => a.LastIns)
+            //    .WithOne(e => e.Enf)
+            //    .HasForeignKey<Enfants>(b => b.NumDos);
         });
 
         modelBuilder.Entity<Inss>(entity =>
