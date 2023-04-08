@@ -31,7 +31,7 @@ public partial class TestViewEFCoreDbContext : DbContext
 
             //entity.Metadata.IsKeyless = false;
             entity.HasKey(e => e.NumDos);
-            entity.ToView("ViewLastIns");
+            entity.ToView("View_LastIns");
 
             entity.Property(e => e.ExceptionDetail)
                 .HasMaxLength(1000)
@@ -72,7 +72,7 @@ public partial class TestViewEFCoreDbContext : DbContext
                 .HasMaxLength(2)
             .IsUnicode(false);
 
-            entity.HasOne(e => e.Enf).WithOne(e => e.LastIns).HasForeignKey<ViewLastIns>(e => e.NumDos);
+            //entity.HasOne(e => e.Enf).WithOne(e => e.LastIns).HasForeignKey<ViewLastIns>(e => e.NumDos);
         });
 
         modelBuilder.Entity<Enfants>(entity =>
@@ -132,7 +132,7 @@ public partial class TestViewEFCoreDbContext : DbContext
             //this seem not work, 
             entity
                 .HasOne(a => a.LastIns)
-                .WithOne(e => e.Enf)
+                .WithOne()
                 .HasForeignKey<Enfants>(b => b.NumDos);
         });
 

@@ -9,5 +9,5 @@ namespace TestViewEfCore.Models;
 public partial class ViewLastIns
 {
     //added by me for the relation
-    public Enfants Enf { get; set; }
+    //public Enfants Enf { get; set; }
 }
